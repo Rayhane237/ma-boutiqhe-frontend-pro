@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap');
+
+:root {
+  --accent: #c0522a;
+  --text: #1a1a1a;
+  --muted: #555;
+  --border: #e0d8d0;
+}
+
+/* ── Footer ──────────────────────────────────── */
+.footer {
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: start;
+  padding: 80px 60px;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+/* ── Logo ────────────────────────────────────── */
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 2.2rem;
+  color: var(--accent);
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.footer-logo:hover {
+  opacity: 0.75;
+}
+
+/* ── Columns ─────────────────────────────────── */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-link {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: block;
+}
+
+.footer-link:hover {
+  color: var(--accent);
+}
+
+/* ── Contact ─────────────────────────────────── */
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-contact-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: var(--text);
+  margin: 0;
+}
+
+.footer-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.footer-input {
+  background: none;
+  border: none;
+  border-bottom: 1.5px solid var(--accent);
+  outline: none;
+  padding: 6px 0;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text);
+  width: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.footer-input:focus {
+  border-bottom-color: var(--text);
+}
+
+/* ── Button ──────────────────────────────────── */
+.footer-btn {
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 0;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.footer-btn:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* ── Responsive: Tablet ──────────────────────── */
+@media (max-width: 1024px) {
+  .footer {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 60px 40px;
+    gap: 32px;
+  }
+
+  .footer-logo {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── Responsive: Mobile ──────────────────────── */
+@media (max-width: 768px) {
+  .footer {
+    grid-template-columns: 1fr 1fr;
+    padding: 48px 24px;
+    gap: 32px;
+  }
+
+  .footer-logo {
+    grid-column: 1 / -1;
+  }
+
+  .footer-contact {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+
+  .footer-logo    { font-size: 1.8rem; }
+  .footer-col     { gap: 16px; }
+  .footer-link    { font-size: 0.82rem; }
+}

@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap');
+
+:root {
+  --accent: #c0522a;
+  --text: #1a1a1a;
+  --muted: #888;
+  --card-bg: #f5f0eb;
+}
+
+/* ── Wrapper ─────────────────────────────────── */
+.category-sections {
+  width: 100%;
+  position: relative;
+}
+
+/* ── Row (sticky slide) ──────────────────────── */
+.cs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.cs-reverse {
+  direction: rtl;
+}
+
+.cs-reverse > * {
+  direction: ltr;
+}
+
+/* ── Hero side ───────────────────────────────── */
+.cs-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.cs-row:hover .cs-hero-img {
+  transform: scale(1.03);
+}
+
+.cs-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  transition: background 0.3s ease;
+}
+
+.cs-row:hover .cs-hero-overlay {
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.cs-category-title {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1rem, 2.2vw, 1.5rem);
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1.5px;
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Product side ────────────────────────────── */
+.cs-product {
+  background-color: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 48px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.cs-product-img-wrapper {
+  width: 70%;
+  max-width: 360px;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.cs-product:hover .cs-product-img {
+  transform: scale(1.04);
+}
+
+/* ── Product info ────────────────────────────── */
+.cs-product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.cs-product-name {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+}
+
+.cs-product-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+/* ── Add to cart button ──────────────────────── */
+.cs-add-btn {
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px 48px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  width: 100%;
+  max-width: 320px;
+}
+
+.cs-add-btn:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* ── Responsive: Tablet ──────────────────────── */
+@media (max-width: 1024px) {
+  .cs-product { padding: 48px 32px; }
+  .cs-product-img-wrapper { width: 80%; }
+}
+
+/* ── Responsive: Mobile ──────────────────────── */
+@media (max-width: 768px) {
+  /* Disable sticky on mobile */
+  .cs-row,
+  .cs-reverse {
+    position: relative;
+    height: auto;
+    top: auto;
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+
+  .cs-hero     { min-height: 320px; }
+  .cs-product  { padding: 48px 24px; min-height: auto; }
+  .cs-add-btn  { max-width: 100%; padding: 14px 24px; }
+}
+
+@media (max-width: 480px) {
+  .cs-hero         { min-height: 260px; }
+  .cs-product      { padding: 36px 20px; gap: 16px; }
+  .cs-product-name { font-size: 0.82rem; }
+  .cs-product-price { font-size: 1rem; }
+  .cs-add-btn      { font-size: 0.75rem; }
+}

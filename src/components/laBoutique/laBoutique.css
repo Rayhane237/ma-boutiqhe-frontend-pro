@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600;700&family=Cormorant+Garamond:ital,wght@1,400&display=swap');
+
+:root {
+  --accent: #c0522a;
+  --text: #1a1a1a;
+  --muted: #666;
+  --border: #e8e0d8;
+  --card-bg: #f5f0eb;
+}
+
+/* ── Wrapper ─────────────────────────────────── */
+.lb-wrapper {
+  width: 100%;
+  padding: 60px 60px 100px;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+/* ── Page title ──────────────────────────────── */
+.lb-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 0.3em;
+  color: var(--text);
+  text-align: center;
+  margin: 0 0 60px;
+}
+
+/* ── Layout ──────────────────────────────────── */
+.lb-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ── Sidebar ─────────────────────────────────── */
+.lb-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.lb-filter-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.lb-filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lb-filter-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.lb-filter-toggle {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.lb-filter-divider {
+  height: 1px;
+  background-color: var(--border);
+  width: 100%;
+}
+
+/* ── Filter list ─────────────────────────────── */
+.lb-filter-list {
+  list-style: none;
+  margin: 12px 0 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lb-filter-item {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.lb-filter-item:hover {
+  color: var(--accent);
+}
+
+.lb-filter-item.active {
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ── Product grid ────────────────────────────── */
+.lb-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px 20px;
+}
+
+/* ── Card ────────────────────────────────────── */
+.lb-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Badge ───────────────────────────────────── */
+.lb-badge {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 5px 14px;
+  width: fit-content;
+  margin-bottom: -2px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Image wrapper ───────────────────────────── */
+.lb-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--card-bg);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.lb-card:hover .lb-img {
+  transform: scale(1.04);
+}
+
+/* ── Hover overlay ───────────────────────────── */
+.lb-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lb-card:hover .lb-hover-overlay {
+  opacity: 1;
+}
+
+.lb-apercu {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+}
+
+/* ── Info ────────────────────────────────────── */
+.lb-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.lb-name {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.lb-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: var(--accent);
+}
+
+/* ── Voir plus ───────────────────────────────── */
+.lb-voir-plus-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  grid-column: 1 / -1;
+}
+
+.lb-voir-plus {
+  background: transparent;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 14px 60px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.lb-voir-plus:hover {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* ── Responsive: Tablet ──────────────────────── */
+@media (max-width: 1024px) {
+  .lb-wrapper  { padding: 48px 32px 80px; }
+  .lb-layout   { grid-template-columns: 200px 1fr; gap: 40px; }
+  .lb-grid     { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Responsive: Mobile ──────────────────────── */
+@media (max-width: 768px) {
+  .lb-wrapper  { padding: 40px 20px 60px; }
+  .lb-layout   { grid-template-columns: 1fr; gap: 32px; }
+  .lb-grid     { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .lb-sidebar  { border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+}
+
+@media (max-width: 480px) {
+  .lb-title    { letter-spacing: 0.15em; margin-bottom: 40px; }
+  .lb-grid     { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .lb-badge    { font-size: 0.65rem; padding: 4px 8px; }
+  .lb-name     { font-size: 0.78rem; }
+  .lb-price    { font-size: 0.95rem; }
+  .lb-voir-plus { padding: 12px 40px; }
+}

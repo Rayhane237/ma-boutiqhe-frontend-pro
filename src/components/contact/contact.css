@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Jost:wght@300;400&display=swap');
+
+/* ── ROOT ── */
+.contact-wrapper {
+  width: 100%;
+  background: #ffffff;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  color: #1a1714;
+}
+
+/* ── PAGE TITLE ── */
+.contact-title {
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 52px;
+  letter-spacing: 12px;
+  color: #1a1714;
+  padding: 70px 48px 80px;
+  background: #ffffff;
+  margin: 0;
+}
+
+/* ── SHARED: SECTION HEADING + DIVIDER ── */
+.contact-section-heading {
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: #1a1714;
+  margin-bottom: 18px;
+}
+
+.contact-divider {
+  width: 30px;
+  height: 2px;
+  background: #1a1714;
+  margin: 0 auto 50px;
+}
+
+/* ── SERVICE CLIENT ── */
+.contact-service {
+  background: #f2ede6;
+  padding: 70px 48px 80px;
+}
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  gap: 20px;
+}
+
+.contact-info-col h3.contact-info-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 26px;
+  color: #b5432a;
+  margin-bottom: 14px;
+}
+
+.contact-info-col p {
+  font-size: 14px;
+  line-height: 1.9;
+  font-weight: 300;
+  color: #1a1714;
+}
+
+/* ── REQUÊTES ── */
+.contact-requetes {
+  background: #f2ede6;
+  padding: 80px 48px;
+  border-top: 1px solid #d8d0c8;
+}
+
+.contact-requetes-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 42px;
+  color: #b5432a;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.contact-requetes-sub {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: #555;
+  margin-bottom: 52px;
+}
+
+/* ── FORM ── */
+.contact-form {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 36px;
+}
+
+.contact-form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 36px;
+}
+
+.contact-form-row .contact-form-field {
+  margin-bottom: 0;
+}
+
+.contact-form-field label {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  color: #1a1714;
+  font-weight: 300;
+}
+
+.contact-form-field input,
+.contact-form-field textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #b5432a;
+  outline: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #1a1714;
+  padding: 8px 0;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.contact-form-field input:focus,
+.contact-form-field textarea:focus {
+  border-bottom-color: #1a1714;
+}
+
+.contact-form-field textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* ── SUBMIT BUTTON ── */
+.contact-btn {
+  display: block;
+  margin: 10px auto 0;
+  width: 420px;
+  max-width: 100%;
+  padding: 18px 0;
+  background: #b5432a;
+  color: #ffffff;
+  border: 1px solid #b5432a;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+.contact-btn:hover {
+  background: transparent;
+  color: #b5432a;
+}
+
+/* ── SUCCESS MESSAGE ── */
+.contact-success {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: #b5432a;
+  margin-top: 24px;
+  animation: contactFadeIn 0.4s ease;
+}
+
+@keyframes contactFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── NOS BOUTIQUES ── */
+.contact-boutiques {
+  background: #f2ede6;
+  padding: 80px 48px 100px;
+  border-top: 1px solid #d8d0c8;
+}
+
+.contact-boutiques-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-boutique-item p {
+  font-size: 14px;
+  line-height: 1.9;
+  font-weight: 300;
+  color: #1a1714;
+}
+
+.contact-boutique-phone {
+  color: #b5432a !important;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .contact-title {
+    font-size: 36px;
+    letter-spacing: 8px;
+    padding: 52px 24px 60px;
+  }
+
+  .contact-info-grid,
+  .contact-boutiques-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .contact-form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .contact-form-row .contact-form-field {
+    margin-bottom: 36px;
+  }
+
+  .contact-service,
+  .contact-requetes,
+  .contact-boutiques {
+    padding: 60px 24px;
+  }
+}
