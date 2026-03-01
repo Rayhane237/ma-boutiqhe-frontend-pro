@@ -10,6 +10,9 @@ import LaBoutique from "./components/laBoutique/laBoutique"
 import NotreSavoirFaire from "./components/notreSavoirFaire/notreSavoirFaire"
 import NotreHistoire from "./components/notreHistoire/notreHostoire"
 
+import ProductsList from './components/laBoutique/pages/ProductsList';
+import ProductDetail from './components/laBoutique/pages/ProductDetail';
+
 
 const router = createBrowserRouter([
   {
@@ -33,6 +36,12 @@ const router = createBrowserRouter([
     path:"/laBoutique",
     element: <LaBoutique />,
   },
+  { path: "/products",
+     element: <ProductsList />
+ },
+{ path: "/products/:id",
+   element: <ProductDetail />
+ },
   {
     path:"/notreSavoirFaire",
     element: <NotreSavoirFaire />,

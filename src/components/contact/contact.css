@@ -9,6 +9,17 @@
   color: #1a1714;
 }
 
+.contact-success {
+  font-size :3rem;
+ 
+}
+.contact-error {
+  color: #B5522A;
+  font-size: 1.2rem;
+  margin-top: 4px;
+  font-family: 'Jost', sans-serif;
+}
+
 /* ── PAGE TITLE ── */
 .contact-title {
   text-align: center;

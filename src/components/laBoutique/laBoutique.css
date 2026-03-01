@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600;700&family=Cormorant+Garamond:ital,wght@1,400&display=swap');
 
+.lb-wrapper {
+  margin-top: 0;
+  padding-top: 0;
+}
 :root {
   --accent: #c0522a;
   --text: #1a1a1a;
@@ -11,7 +15,8 @@
 /* ── Wrapper ─────────────────────────────────── */
 .lb-wrapper {
   width: 100%;
-  padding: 60px 60px 100px;
+  padding-top: 0;
+  margin-top: 0;
   box-sizing: border-box;
   background: #ffffff;
 }
@@ -39,6 +44,7 @@
 .lb-sidebar {
   display: flex;
   flex-direction: column;
+  margin-left: 1rem;
   gap: 0;
 }
 
