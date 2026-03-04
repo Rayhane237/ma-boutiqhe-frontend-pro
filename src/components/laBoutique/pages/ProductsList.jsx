@@ -4,7 +4,7 @@ import Nav from '../../nav/Nav'
 import Footer from '../../FOOTER/Footer'
 import './ProductDetail.css'
 
-function ProductDetail() {
+function ProductList() {
   const { id } = useParams()
   const [product, setProduct] = useState(null)
 
@@ -31,7 +31,7 @@ function ProductDetail() {
           <div className="pd-info-section">
             <h1 className="pd-name">{product.name}</h1>
             <p className="pd-sku">SKU : {product.sku}</p>
-            <p className="pd-price">{product.price} دج</p>
+            <p className="pd-price">{product.price} da</p>
 
             {/* Model selector */}
             <div className="pd-field">
@@ -84,4 +84,4 @@ function ProductDetail() {
   )
 }
 
-export default ProductDetail
+export default ProductList
