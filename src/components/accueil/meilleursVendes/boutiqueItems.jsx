@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './boutiqueItems.css';
+import './BoutiqueItems.css';
 
 const products = [
   { id: 1,  name: 'Je suis un article', price: '400,00da', image: '/bag1.jpg' },

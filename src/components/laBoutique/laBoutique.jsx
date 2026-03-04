@@ -1,6 +1,6 @@
 import Nav from '../nav/Nav'
-import './laBoutique.css'
-import Footer from '../FOOTER/footer'
+import './LaBoutique.css'
+import Footer from '../FOOTER/Footer'
 import { useEffect, useState } from 'react'
 import QuickViewModal from '../QuickViewModal/QuickViewModal' // ← ADD THIS
 

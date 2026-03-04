@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import React from 'react';
 import Nav from '../nav/Nav';
-import Footer from '../FOOTER/footer';
-import './contact.css';
+import Footer from '../FOOTER/Footer';
+import './Contact.css';
 
 const boutiques = [
   { id: 1, address: '15 rue du château', city: '75001 Paris, France', phone: '01 23 45 67 89' },

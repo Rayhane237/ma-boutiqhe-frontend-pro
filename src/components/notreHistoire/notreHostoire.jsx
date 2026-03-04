@@ -1,7 +1,7 @@
 import React from 'react';
-import './notreHistoire.css';
+import './NotreHistoire.css';
 import Nav from "../nav/Nav";
-import Footer from '../FOOTER/footer';
+import Footer from '../FOOTER/Footer';
 
 const NotreHistoire = () => {
   return (

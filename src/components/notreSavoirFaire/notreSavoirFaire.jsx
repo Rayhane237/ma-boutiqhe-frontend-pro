@@ -1,6 +1,6 @@
 import React from 'react';
-import './notreSavoirFaire.css';
-import Footer from '../FOOTER/footer';
+import './NotreSavoirFaire.css';
+import Footer from '../FOOTER/Footer';
 import Nav from '../nav/Nav';
 
 const sections = [

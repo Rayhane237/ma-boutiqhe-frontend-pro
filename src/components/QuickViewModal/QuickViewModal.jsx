@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './quick.css'
+import './Quick.css'
 
 export default function QuickViewModal({ productId, onClose }) {
   const [product, setProduct] = useState(null)

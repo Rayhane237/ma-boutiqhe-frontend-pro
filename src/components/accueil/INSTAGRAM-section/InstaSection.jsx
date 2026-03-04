@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './instagramSection.css';
+import './InstaSection.css';
 
 const photos = [
   { id: 1,  image: '/insta1.jpg' },

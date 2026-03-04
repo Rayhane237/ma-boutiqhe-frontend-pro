@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import './nav.css';
+import './Nav.css';
 import { IoIosMenu } from 'react-icons/io';
 import { RiCloseLargeFill } from 'react-icons/ri';
 import { FaFacebookF, FaInstagram, FaTwitter, FaPinterestP } from 'react-icons/fa';
