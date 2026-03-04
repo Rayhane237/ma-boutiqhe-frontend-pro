@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap');
+
+:root {
+  --accent: #c0522a;
+  --text: #1a1a1a;
+  --muted: #666;
+  --border: #e8e0d8;
+  --card-bg: #f5f0eb;
+}
+
+/* ── Section ─────────────────────────────────── */
+.boutique-items {
+  width: 100%;
+  padding: 80px 0 100px;
+  background: #ffffff;
+}
+
+/* ── Title ───────────────────────────────────── */
+.bi-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  letter-spacing: 0.3em;
+  color: var(--text);
+  text-align: center;
+  margin: 0 0 16px;
+}
+
+.bi-divider {
+  width: 40px;
+  height: 2px;
+  background-color: var(--text);
+  margin: 0 auto 60px;
+}
+
+/* ── Carousel ────────────────────────────────── */
+.bi-carousel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ── Arrows ──────────────────────────────────── */
+.bi-arrow {
+  background: none;
+  border: none;
+  font-size: 2.8rem;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0 8px;
+  line-height: 1;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.bi-arrow:hover:not(:disabled) { color: var(--accent); }
+.bi-arrow:disabled { opacity: 0.2; cursor: default; }
+
+/* ── Grid ────────────────────────────────────── */
+.bi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  flex: 1;
+}
+
+/* ── Card ────────────────────────────────────── */
+.bi-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Badge ───────────────────────────────────── */
+.bi-badge {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 5px 14px;
+  width: fit-content;
+  margin-bottom: -2px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Image wrapper ───────────────────────────── */
+.bi-img-wrapper {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-color: var(--card-bg);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bi-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.bi-card:hover .bi-img {
+  transform: scale(1.04);
+}
+
+/* ── Hover overlay ───────────────────────────── */
+.bi-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bi-card:hover .bi-hover-overlay {
+  opacity: 1;
+}
+
+.bi-apercu {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+}
+
+/* ── Info ────────────────────────────────────── */
+.bi-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.bi-name {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.bi-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: var(--accent);
+}
+
+.bi-view-all {
+  display: block;
+  margin: 40px auto 0;
+  padding: 12px 24px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  background-color: var(--accent);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 1024px) {
+  .bi-carousel { padding: 0 24px; }
+  .bi-grid     { gap: 14px; }
+}
+
+@media (max-width: 768px) {
+  .boutique-items { padding: 60px 0 80px; }
+  .bi-carousel    { padding: 0 12px; gap: 8px; }
+  .bi-grid        { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .bi-arrow       { font-size: 2rem; padding: 0 4px; }
+}
+
+@media (max-width: 480px) {
+  .bi-title   { letter-spacing: 0.2em; }
+  .bi-grid    { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .bi-badge   { font-size: 0.65rem; padding: 4px 8px; }
+  .bi-name    { font-size: 0.75rem; }
+  .bi-price   { font-size: 0.9rem; }
+}

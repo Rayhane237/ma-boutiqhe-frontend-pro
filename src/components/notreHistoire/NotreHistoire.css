@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+:root {
+  --accent: #c0522a;
+  --text: #1a1a1a;
+  --muted: #555;
+  --bg-light: #f5f0eb;
+}
+
+.nh-wrapper {
+  width: 100%;
+  background: #ffffff;
+}
+
+.nh-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 0.3em;
+  color: var(--text);
+  text-align: center;
+  padding: 60px 60px 40px;
+  margin: 0;
+  background: #ffffff;
+  position: relative;
+  z-index: 10;
+}
+
+.nh-sections {
+  width: 100%;
+  position: relative;
+}
+
+.nh-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.nh-text-side {
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 72px;
+  gap: 20px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.nh-text-center {
+  align-items: center;
+  text-align: center;
+}
+
+.nh-section-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  letter-spacing: 0.25em;
+  color: var(--text);
+  margin: 0;
+}
+
+.nh-divider {
+  width: 30px;
+  height: 2px;
+  background-color: var(--text);
+  margin: 4px 0;
+}
+
+.nh-text-center .nh-divider { margin: 4px auto; }
+
+.nh-paragraph {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.85;
+  color: var(--muted);
+  margin: 0;
+  max-width: 520px;
+}
+
+.nh-text-center .nh-paragraph { text-align: center; }
+
+.nh-image-side {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.nh-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.nh-section:hover .nh-img { transform: scale(1.03); }
+
+@media (max-width: 1024px) {
+  .nh-title     { padding: 48px 40px 32px; }
+  .nh-text-side { padding: 60px 48px; }
+}
+
+@media (max-width: 768px) {
+  .nh-title { padding: 40px 24px 28px; letter-spacing: 0.15em; }
+
+  .nh-section {
+    position: relative;
+    height: auto;
+    top: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .nh-section .nh-text-side  { order: 2; height: auto; }
+  .nh-section .nh-image-side { order: 1; height: 320px; }
+  .nh-text-side  { padding: 48px 28px; }
+  .nh-paragraph  { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .nh-title      { font-size: 1.8rem; letter-spacing: 0.1em; }
+  .nh-text-side  { padding: 36px 20px; gap: 16px; }
+  .nh-image-side { height: 260px; }
+  .nh-paragraph  { font-size: 0.95rem; }
+}
