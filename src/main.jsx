@@ -4,15 +4,15 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import Accueil from './components/accueil/Accueil';
-import Apropos from "./components/apropos/Apropos"
-import Contact from "./components/contact/Contact"
-import LaBoutique from "./components/laBoutique/LaBoutique"
-import NotreSavoirFaire from "./components/notreSavoirFaire/NotreSavoirFaire"
-import NotreHistoire from "./components/notreHistoire/NotreHistoire"
+import Apropos from './components/apropos/Apropos';
+import Contact from './components/contact/Contact';
+import LaBoutique from './components/laBoutique/LaBoutique';
+import NotreSavoirFaire from './components/notreSavoirFaire/NotreSavoirFaire';
+import NotreHistoire from './components/notreHistoire/NotreHistoire';
+
 
 import ProductsList from './components/laBoutique/pages/ProductsList';
 import ProductDetail from './components/laBoutique/pages/ProductDetail';
-
 
 const router = createBrowserRouter([
   {
