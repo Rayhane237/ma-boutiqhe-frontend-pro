@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Nav from '../../nav/Nav'
-import Footer from '../../FOOTER/footer'
+import Footer from '../../FOOTER/Footer'
 import './ProductDetail.css'
 
 function ProductDetail() {
