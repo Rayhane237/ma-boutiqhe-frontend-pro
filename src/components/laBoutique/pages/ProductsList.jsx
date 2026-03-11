@@ -9,7 +9,7 @@ function ProductList() {
   const [product, setProduct] = useState(null)
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/products/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
       .then(res => res.json())
       .then(data => setProduct(data))
   }, [id])

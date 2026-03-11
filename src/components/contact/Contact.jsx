@@ -50,7 +50,7 @@ const Contact = () => {
     if (!validateForm()) return  // stops here and shows errors
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/messages`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
