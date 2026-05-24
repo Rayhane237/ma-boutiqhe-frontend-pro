@@ -2,7 +2,7 @@ import Nav from '../nav/Nav'
 import './LaBoutique.css'
 import Footer from '../FOOTER/Footer'
 import { useEffect, useState } from 'react'
-import QuickViewModal from '../QuickViewModal/QuickViewModal' // ← ADD THIS
+import QuickViewModal from '../QuickViewModal/QuickViewModal'
 
 const categories = ['Tout', 'Accessoires', 'Portefeuilles en cuir', 'Ceintures en cuir', 'Meilleures ventes']
 const INITIAL_COUNT = 8
@@ -10,10 +10,10 @@ const LOAD_MORE = 8
 
 const LaBoutique = () => {
   const [allProducts, setAllProducts] = useState([])
-  const [selectedProductId, setSelectedProductId] = useState(null) // ← ADD THIS
+  const [selectedProductId, setSelectedProductId] = useState(null)
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/products`)
+    fetch(`${import.meta.env.VITE_API_URL}/products`)  // ✅ no /api/ double
       .then(res => res.json())
       .then(data => setAllProducts(data))
   }, [])
@@ -49,6 +49,7 @@ const LaBoutique = () => {
       <h1 className="lb-title">LA BOUTIQUE</h1>
 
       <div className="lb-layout">
+
         {/* ── Sidebar ── */}
         <aside className="lb-sidebar">
           <div className="lb-filter-group">
@@ -101,7 +102,6 @@ const LaBoutique = () => {
         <div className="lb-content">
           <div className="lb-grid">
             {visible.map((product) => (
-              // ← CHANGED: div instead of Link, click opens modal
               <div
                 key={product._id}
                 className="lb-card"
@@ -135,7 +135,6 @@ const LaBoutique = () => {
         </div>
       </div>
 
-      {/* ← ADD THIS: modal renders when a product is selected */}
       {selectedProductId && (
         <QuickViewModal
           productId={selectedProductId}

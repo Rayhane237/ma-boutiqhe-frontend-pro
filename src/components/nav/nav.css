@@ -379,3 +379,17 @@
   .ab-input       { padding: 0.75rem; }
   .ab-bottom      { padding: 1.2rem 1rem; }
 }
+
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.navbar-hidden {
+  transform: translateY(-100%);
+}

@@ -1,62 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
 
 import App from './App';
 import Accueil from './components/accueil/Accueil';
 import Apropos from './components/apropos/Apropos';
 import Contact from './components/contact/Contact';
-import LaBoutique from './components/laBoutique/LaBoutique';
+import LaBoutique from './components/laBoutique/laBoutique';
 import NotreSavoirFaire from './components/notreSavoirFaire/NotreSavoirFaire';
 import NotreHistoire from './components/notreHistoire/NotreHistoire';
-
-
 import ProductsList from './components/laBoutique/pages/ProductsList';
 import ProductDetail from './components/laBoutique/pages/ProductDetail';
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-  },
-  {
-    path:"/accueil",
-    element: <Accueil />,
-  },
-   {
-    path:"/apropos",
-    element: <Apropos />,
-  },
-   {
-    path:"/contact",
-    element: <Contact />,
-
-  },
-  {
-    path:"/laBoutique",
-    element: <LaBoutique />,
-  },
-  { path: "/products",
-     element: <ProductsList />
- },
-{ path: "/products/:id",
-   element: <ProductDetail />
- },
-  {
-    path:"/notreSavoirFaire",
-    element: <NotreSavoirFaire />,
-  },
-  {
-    path:"/notreHistoire",
-    element: <NotreHistoire />,
-  },
-  
-
+  { path: '/',                 element: <App /> },
+  { path: '/accueil',          element: <Accueil /> },
+  { path: '/apropos',          element: <Apropos /> },
+  { path: '/contact',          element: <Contact /> },
+  { path: '/laBoutique',       element: <LaBoutique /> },
+  { path: '/products',         element: <ProductsList /> },
+  { path: '/products/:id',     element: <ProductDetail /> },
+  { path: '/notreSavoirFaire', element: <NotreSavoirFaire /> },
+  { path: '/notreHistoire',    element: <NotreHistoire /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   </React.StrictMode>
 );
-

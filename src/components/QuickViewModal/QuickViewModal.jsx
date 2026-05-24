@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './Quick.css'
+import { useCart } from '../../context/CartContext'
 
 export default function QuickViewModal({ productId, onClose }) {
   const [product, setProduct] = useState(null)
@@ -9,11 +10,11 @@ export default function QuickViewModal({ productId, onClose }) {
   const [wishlisted, setWishlisted] = useState(false)
   const [added, setAdded] = useState(false)
   const [openSection, setOpenSection] = useState('details')
+  const { addToCart } = useCart()
 
-  // Fetch product by ID (dynamic param)
   useEffect(() => {
     setLoading(true)
-    fetch(`http://localhost:5000/api/products/${productId}`)
+    fetch(`${import.meta.env.VITE_API_URL}/products/${productId}`)
       .then(res => res.json())
       .then(data => {
         setProduct(data)
@@ -22,7 +23,6 @@ export default function QuickViewModal({ productId, onClose }) {
       })
   }, [productId])
 
-  // Close on Escape
   useEffect(() => {
     const handler = (e) => { if (e.key === 'Escape') onClose() }
     document.addEventListener('keydown', handler)
@@ -34,6 +34,7 @@ export default function QuickViewModal({ productId, onClose }) {
   }, [onClose])
 
   function handleAddToCart() {
+    addToCart(product, quantity)
     setAdded(true)
     setTimeout(() => setAdded(false), 1800)
   }
@@ -43,9 +44,9 @@ export default function QuickViewModal({ productId, onClose }) {
   }
 
   const accordions = [
-    { key: 'details',  label: "Details de l'article",     content: product?.details },
-    { key: 'exchange', label: 'Echange et remboursement',  content: product?.returnPolicy },
-    { key: 'shipping', label: 'Politique de livraison',    content: product?.shippingPolicy },
+    { key: 'details',  label: "Details de l'article",    content: product?.details },
+    { key: 'exchange', label: 'Echange et remboursement', content: product?.returnPolicy },
+    { key: 'shipping', label: 'Politique de livraison',   content: product?.shippingPolicy },
   ]
 
   return (
@@ -54,34 +55,19 @@ export default function QuickViewModal({ productId, onClose }) {
       onClick={(e) => e.target.classList.contains('qv-overlay') && onClose()}
     >
       <div className="qv-modal">
-
-        {/* Close button */}
         <button className="qv-close" onClick={onClose}>x</button>
 
-        {/* Loading state */}
         {loading && (
-          <div className="qv-loading">
-            <span>Chargement...</span>
-          </div>
+          <div className="qv-loading"><span>Chargement...</span></div>
         )}
 
-        {/* Content */}
         {!loading && product && (
           <>
-            {/* Left: Image */}
             <div className="qv-images">
-              {product.badge && (
-                <span className="qv-badge">{product.badge}</span>
-              )}
+              {product.badge && <span className="qv-badge">{product.badge}</span>}
               <div className="qv-img-wrap">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="qv-main-img"
-                />
+                <img src={product.image} alt={product.name} className="qv-main-img" />
               </div>
-
-              {/* Color dots under image */}
               {product.colors?.length > 0 && (
                 <div className="qv-thumbs">
                   {product.colors.map((c) => (
@@ -97,7 +83,6 @@ export default function QuickViewModal({ productId, onClose }) {
               )}
             </div>
 
-            {/* Right: Info */}
             <div className="qv-info">
               <p className="qv-brand">adeline.</p>
               <h2 className="qv-name">{product.name}</h2>
@@ -105,22 +90,10 @@ export default function QuickViewModal({ productId, onClose }) {
 
               <div className="qv-price-row">
                 <span className="qv-price">{product.price} DA</span>
-              
               </div>
 
               <div className="qv-divider" />
 
-              {/* Color selector */}
-              {product.colors?.length > 0 && (
-                <div className="qv-option">
-                  
-                  <div className="qv-swatches">
-                   
-                  </div>
-                </div>
-              )}
-
-              {/* Quantity + Add to cart + Wishlist */}
               <div className="qv-actions">
                 <div className="qv-qty">
                   <button onClick={() => setQty(q => Math.max(1, q - 1))}>-</button>
@@ -132,7 +105,7 @@ export default function QuickViewModal({ productId, onClose }) {
                   className={`qv-btn-cart ${added ? 'added' : ''}`}
                   onClick={handleAddToCart}
                 >
-                  {added ? 'Ajoute !' : 'Ajouter au panier'}
+                  {added ? 'Ajouté !' : 'Ajouter au panier'}
                 </button>
 
                 <button
@@ -143,21 +116,12 @@ export default function QuickViewModal({ productId, onClose }) {
                 </button>
               </div>
 
-              <button className="qv-btn-checkout">
-                Commander et payer
-              </button>
+              <button className="qv-btn-checkout">Commander et payer</button>
 
-              {/* Accordion */}
               <div className="qv-accordion">
                 {accordions.map(({ key, label, content }) => (
-                  <div
-                    key={key}
-                    className={`qv-acc-item ${openSection === key ? 'open' : ''}`}
-                  >
-                    <button
-                      className="qv-acc-header"
-                      onClick={() => toggleSection(key)}
-                    >
+                  <div key={key} className={`qv-acc-item ${openSection === key ? 'open' : ''}`}>
+                    <button className="qv-acc-header" onClick={() => toggleSection(key)}>
                       {label}
                       <span className="qv-acc-icon">+</span>
                     </button>
@@ -168,13 +132,9 @@ export default function QuickViewModal({ productId, onClose }) {
                 ))}
               </div>
 
-              <a
-                href={`/products/${product._id}`}
-                className="qv-full-link"
-              >
+              <a href={`/products/${product._id}`} className="qv-full-link">
                 Voir la fiche complete
               </a>
-
             </div>
           </>
         )}

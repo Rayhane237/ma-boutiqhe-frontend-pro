@@ -1,20 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Nav.css';
 import { IoIosMenu } from 'react-icons/io';
 import { RiCloseLargeFill } from 'react-icons/ri';
 import { FaFacebookF, FaInstagram, FaTwitter, FaPinterestP } from 'react-icons/fa';
+import { useCart } from '../../context/CartContext';
+import CartDrawer from '../cart/CartDrawer'
 
 const Nav = () => {
+  const [cartOpen, setCartOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false);
   const [abonnerOpen, setAbonnerOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [toast, setToast] = useState({ show: false, message: '', type: '' });
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const { totalItems } = useCart();
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY
+      if (currentY < lastScrollY.current || currentY < 10) {
+        setVisible(true)
+      } else {
+        setVisible(false)
+      }
+      lastScrollY.current = currentY
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navLinks = [
     { label: 'Accueil', path: '/' },
@@ -42,9 +62,8 @@ const Nav = () => {
 
   return (
     <>
-      <header className="navbar-wrapper">
+      <header className={`navbar-wrapper ${visible ? '' : 'navbar-hidden'}`}>
 
-        {/* Top bar */}
         <div className="navbar-top">
           <div className="navbar-socials">
             <a href="#" aria-label="Facebook"><FaFacebookF /></a>
@@ -53,15 +72,17 @@ const Nav = () => {
             <a href="#" aria-label="Pinterest"><FaPinterestP /></a>
           </div>
 
-          <div className="navbar-logo" onClick={() => navigate('/')}>
-            adeline.
-          </div>
+          <div className="navbar-logo" onClick={() => navigate('/')}>adeline.</div>
 
           <div className="navbar-actions">
             <button className="btn-connexion" onClick={() => navigate('/connexion')}>
               Connexion
             </button>
-            <button className="btn-panier">Panier (0)</button>
+            <button className="btn-panier" onClick={() => setCartOpen(true)}>
+               Panier ({totalItems})
+            </button>
+           
+              {cartOpen && <CartDrawer onClose={() => setCartOpen(false)} />} 
           </div>
 
           <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
@@ -69,10 +90,8 @@ const Nav = () => {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="navbar-divider" />
 
-        {/* Bottom nav links */}
         <nav className={`navbar-links ${menuOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
             <span
@@ -90,7 +109,6 @@ const Nav = () => {
 
       </header>
 
-      {/* Subscribe slide-up panel */}
       <div className={`ab-bottom ${abonnerOpen ? 'show' : ''}`}>
         <div className="ab-header">
           <h3>Abonnez-vous</h3>
@@ -113,7 +131,6 @@ const Nav = () => {
         </div>
       </div>
 
-      {/* Toast */}
       {toast.show && (
         <div className={`toast ${toast.type}`}>{toast.message}</div>
       )}
