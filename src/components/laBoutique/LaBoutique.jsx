@@ -13,7 +13,7 @@ const LaBoutique = () => {
   const [selectedProductId, setSelectedProductId] = useState(null)
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/products`)  // ✅ no /api/ double
+    fetch(`${import.meta.env.VITE_API_URL}/api/products`)  //  no /api/ double
       .then(res => res.json())
       .then(data => setAllProducts(data))
   }, [])

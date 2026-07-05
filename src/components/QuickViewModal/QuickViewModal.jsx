@@ -14,7 +14,7 @@ export default function QuickViewModal({ productId, onClose }) {
 
   useEffect(() => {
     setLoading(true)
-    fetch(`${import.meta.env.VITE_API_URL}/products/${productId}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/products/${productId}`)
       .then(res => res.json())
       .then(data => {
         setProduct(data)

@@ -23,7 +23,12 @@ const router = createBrowserRouter([
   { path: '/products/:id',     element: <ProductDetail /> },
   { path: '/notreSavoirFaire', element: <NotreSavoirFaire /> },
   { path: '/notreHistoire',    element: <NotreHistoire /> },
-]);
+],
+{
+    future: {
+      v7_startTransition: true,
+    },
+  });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

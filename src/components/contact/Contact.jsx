@@ -80,8 +80,11 @@ const Contact = () => {
   return (
     <div className="contact-wrapper">
       <Nav />
-
-      <h1 className="contact-title">CONTACT</h1>
+          <br />
+          <br />
+      <h1 className="contact-title">
+        CONTACT
+        </h1>
 
       <section className="contact-service">
         <p className="contact-section-heading">SERVICE CLIENT</p>
