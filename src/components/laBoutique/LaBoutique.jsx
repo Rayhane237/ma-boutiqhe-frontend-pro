@@ -18,6 +18,7 @@ const LaBoutique = () => {
       .then(data => setAllProducts(data))
   }, [])
 
+  
   const [activeCategory, setActiveCategory] = useState('Tout')
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT)
   const [openFilters, setOpenFilters] = useState({

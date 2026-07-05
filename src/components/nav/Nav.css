@@ -309,15 +309,11 @@
   to   { opacity: 0; }
 }
 
-@media (max-width: 1024px) {
-  .navbar-top     { padding: 0 28px; }
-  .navbar-divider { margin: 0 28px; }
-  .navbar-links   { gap: 32px; padding: 0 28px; }
-}
-
 @media (max-width: 768px) {
   .navbar-top     { padding: 0 20px; height: 60px; }
-  .navbar-actions { display: none; }
+  .navbar-actions { flex: none; gap: 16px; }
+  .btn-connexion  { display: none; }
+  .btn-panier     { font-size: 0.75rem; white-space: nowrap; }
   .menu-icon      { display: flex; font-size: 1.6rem; }
   .navbar-divider { display: none; }
 
