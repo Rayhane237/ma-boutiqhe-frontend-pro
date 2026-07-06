@@ -75,9 +75,7 @@ const Nav = () => {
           <div className="navbar-logo" onClick={() => navigate('/')}>adeline.</div>
 
           <div className="navbar-actions">
-            <button className="btn-connexion" onClick={() => navigate('/connexion')}>
-              Connexion
-            </button>
+            
             <button className="btn-panier" onClick={() => setCartOpen(true)}>
                Panier ({totalItems})
             </button>
