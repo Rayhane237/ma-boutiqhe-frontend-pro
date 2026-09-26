@@ -11,13 +11,27 @@ const LOAD_MORE = 8
 const LaBoutique = () => {
   const [allProducts, setAllProducts] = useState([])
   const [selectedProductId, setSelectedProductId] = useState(null)
-  const [sidebarOpen, setSidebarOpen] = useState(false) // NEW: mobile drawer state
+  const [sidebarOpen, setSidebarOpen] = useState(false) // mobile drawer state
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/products`)
       .then(res => res.json())
       .then(data => setAllProducts(data))
   }, [])
+
+  // Lock page scroll while the mobile filter drawer is open
+  useEffect(() => {
+    document.body.style.overflow = sidebarOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [sidebarOpen])
+
+  // Let Escape close the drawer
+  useEffect(() => {
+    if (!sidebarOpen) return
+    const handleKey = (e) => { if (e.key === 'Escape') setSidebarOpen(false) }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [sidebarOpen])
 
   const [activeCategory, setActiveCategory] = useState('Tout')
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT)
@@ -51,7 +65,11 @@ const LaBoutique = () => {
       <h1 className="lb-title">LA BOUTIQUE</h1>
 
       {/* Mobile-only filter trigger */}
-      <button className="lb-mobile-filter-btn" onClick={() => setSidebarOpen(true)}>
+      <button
+        className="lb-mobile-filter-btn"
+        onClick={() => setSidebarOpen(true)}
+        aria-label="Ouvrir les filtres"
+      >
         Filtres
       </button>
 
@@ -66,7 +84,13 @@ const LaBoutique = () => {
         <aside className={`lb-sidebar ${sidebarOpen ? 'lb-sidebar-open' : ''}`}>
           <div className="lb-sidebar-mobile-header">
             <span>Filtres</span>
-            <button className="lb-sidebar-close" onClick={() => setSidebarOpen(false)}>✕</button>
+            <button
+              className="lb-sidebar-close"
+              onClick={() => setSidebarOpen(false)}
+              aria-label="Fermer les filtres"
+            >
+              ✕
+            </button>
           </div>
 
           <div className="lb-filter-group">
