@@ -11,14 +11,14 @@ const LOAD_MORE = 8
 const LaBoutique = () => {
   const [allProducts, setAllProducts] = useState([])
   const [selectedProductId, setSelectedProductId] = useState(null)
+  const [sidebarOpen, setSidebarOpen] = useState(false) // NEW: mobile drawer state
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/products`)  //  no /api/ double
+    fetch(`${import.meta.env.VITE_API_URL}/api/products`)
       .then(res => res.json())
       .then(data => setAllProducts(data))
   }, [])
 
-  
   const [activeCategory, setActiveCategory] = useState('Tout')
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT)
   const [openFilters, setOpenFilters] = useState({
@@ -41,6 +41,7 @@ const LaBoutique = () => {
   const handleCategoryChange = (cat) => {
     setActiveCategory(cat)
     setVisibleCount(INITIAL_COUNT)
+    setSidebarOpen(false) // close drawer after picking a category on mobile
   }
 
   return (
@@ -49,10 +50,25 @@ const LaBoutique = () => {
       <br />
       <h1 className="lb-title">LA BOUTIQUE</h1>
 
+      {/* Mobile-only filter trigger */}
+      <button className="lb-mobile-filter-btn" onClick={() => setSidebarOpen(true)}>
+        Filtres
+      </button>
+
       <div className="lb-layout">
 
+        {/* Backdrop — only rendered/visible when drawer is open, closes it on click */}
+        {sidebarOpen && (
+          <div className="lb-sidebar-backdrop" onClick={() => setSidebarOpen(false)} />
+        )}
+
         {/* ── Sidebar ── */}
-        <aside className="lb-sidebar">
+        <aside className={`lb-sidebar ${sidebarOpen ? 'lb-sidebar-open' : ''}`}>
+          <div className="lb-sidebar-mobile-header">
+            <span>Filtres</span>
+            <button className="lb-sidebar-close" onClick={() => setSidebarOpen(false)}>✕</button>
+          </div>
+
           <div className="lb-filter-group">
             <div className="lb-filter-header" onClick={() => toggleFilter('categorie')}>
               <span className="lb-filter-label">Catégorie</span>
